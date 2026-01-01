@@ -1,0 +1,22 @@
+class Solution {
+    public int maxProduct(int[] nums) {
+        int n = nums.length;
+        int ans = Integer.MIN_VALUE;
+        int prifix = 1;
+        int suffix = 1;
+
+        for(int i = 0; i < n; i++){
+            if(prifix == 0){
+                prifix = 1;
+            }
+            if(suffix == 0){
+                suffix = 1;
+            }
+            prifix *= nums[i];
+            suffix *= nums[n-i-1];
+            ans = Math.max(ans,Math.max(prifix,suffix));
+        }
+        return ans;
+        
+    }
+}
